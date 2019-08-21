@@ -1,3 +1,5 @@
+import java.util.Random
+
 import org.scalatest._
 import Matchers._
 
@@ -30,4 +32,21 @@ class TestSpecs extends FlatSpec {
     result_2 shouldEqual Some(100)
 
   }
+
+  "largestAndSmallest" should "return the smallest and largest element in an unsorted list" in {
+    val nums = List(1, 1)
+    val result = largestAndSmallest(nums)
+    result shouldEqual Some((1, 1))
+
+    val nums_1 = List(2, 1)
+    val result_1 = largestAndSmallest(nums_1)
+    result_1 shouldEqual Some( (1, 2))
+
+    val nums_2 = scala.util.Random.shuffle((1 to 100).toList)
+    val result_2 = largestAndSmallest(nums_2)
+    result_2 shouldEqual Some((1, 100))
+
+  }
+
+
 }

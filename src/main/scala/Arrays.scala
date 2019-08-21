@@ -33,4 +33,25 @@ object Arrays {
 
     findDupeInternal(nums)
   }
+
+  /*
+    How do you find the largest and smallest number in an unsorted integer array?
+
+   */
+  def largestAndSmallest(nums: List[Int]): Option[(Int, Int)] = {
+
+    @scala.annotation.tailrec
+    def internal(nums: List[Int], smallest: Int, largest: Int): (Int, Int) = nums match {
+      case Nil => (smallest, largest)
+      case num::nums => internal(nums, if(num < smallest) num else smallest, if(num > largest) num else largest )
+
+    }
+
+    nums match {
+      case Nil => None
+      case num::nums => Some(internal(nums, num, num))
+    }
+
+  }
+
 }
