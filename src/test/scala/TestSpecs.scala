@@ -1,5 +1,6 @@
 import java.util.Random
 
+import LinkedList.reverse
 import org.scalatest._
 import Matchers._
 
@@ -46,6 +47,12 @@ class TestSpecs extends FlatSpec {
     val result_2 = largestAndSmallest(nums_2)
     result_2 shouldEqual Some((1, 100))
 
+  }
+
+  "reverse" should "reverse a linked list" in {
+    val ll = LinkedList(Some(Node("node 1", Some(Node("node 2", None)))))
+    val reversed = reverse(ll)
+    reversed.head.get.data shouldEqual "node 2"
   }
 
 
